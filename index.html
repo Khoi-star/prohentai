@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Kiếm Hentaiz</title>
+    <style>
+        body { 
+            font-family: -apple-system, sans-serif; 
+            background-color: #121212; 
+            color: #ffffff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .container { text-align: center; width: 90%; }
+        input { 
+            padding: 15px; 
+            width: 100%; 
+            max-width: 350px; 
+            border-radius: 10px; 
+            border: 1px solid #333; 
+            background: #1e1e1e; 
+            color: white; 
+            font-size: 16px; 
+            margin-bottom: 15px; 
+            box-sizing: border-box;
+        }
+        button { 
+            padding: 15px 30px; 
+            width: 100%; 
+            max-width: 350px; 
+            background-color: #e91e63; 
+            color: white; 
+            border: none; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Hentaiz Search</h2>
+    <input type="text" id="tagInput" placeholder="Nhập từ khóa...">
+    <button onclick="openSearch()">Mở Trình Duyệt</button>
+</div>
+
+<script>
+    function openSearch() {
+        let input = document.getElementById('tagInput').value.trim();
+        if (input === "") return alert("Vui lòng nhập từ khóa!");
+
+        // Thay dấu cách thành dấu '+'
+        let query = input.replace(/\s+/g, '+');
+        
+        // Đường dẫn theo yêu cầu của bạn: https://hentaiz.cool/browse?q=mã
+        let url = `https://hentaiz.cool/browse?q=${query}`;
+        
+        // Mở trong cửa sổ mới (trình duyệt mặc định của iOS)
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
