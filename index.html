@@ -9,13 +9,13 @@
             font-family: -apple-system, sans-serif; 
             background-color: #121212; 
             color: #ffffff; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
-        .container { text-align: center; width: 90%; }
+        .container { text-align: center; width: 100%; margin-bottom: 20px; }
         input { 
             padding: 15px; 
             width: 100%; 
@@ -39,6 +39,14 @@
             font-weight: bold; 
             cursor: pointer;
         }
+        #resultFrame {
+            width: 100%;
+            max-width: 800px;
+            height: 70vh;
+            border: 1px solid #333;
+            border-radius: 10px;
+            background: #fff; /* Nền trắng cho iframe */
+        }
     </style>
 </head>
 <body>
@@ -46,22 +54,21 @@
 <div class="container">
     <h2>Hentaiz Search</h2>
     <input type="text" id="tagInput" placeholder="Nhập từ khóa...">
-    <button onclick="openSearch()">Mở Trình Duyệt</button>
+    <button onclick="openSearch()">Tìm kiếm</button>
 </div>
+
+<iframe id="resultFrame" title="Kết quả tìm kiếm"></iframe>
 
 <script>
     function openSearch() {
         let input = document.getElementById('tagInput').value.trim();
         if (input === "") return alert("Vui lòng nhập từ khóa!");
 
-        // Thay dấu cách thành dấu '+'
         let query = input.replace(/\s+/g, '+');
-        
-        // Đường dẫn theo yêu cầu của bạn: https://hentaiz.cool/browse?q=mã
         let url = `https://hentaiz.cool/browse?q=${query}`;
         
-        // Mở trong cửa sổ mới (trình duyệt mặc định của iOS)
-        window.open(url, '_blank');
+        // Gán URL vào iframe thay vì window.open
+        document.getElementById('resultFrame').src = url;
     }
 </script>
 
